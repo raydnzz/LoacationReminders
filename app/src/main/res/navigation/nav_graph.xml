@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/locationListFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.udacity.project4.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/locationListFragment"
+        android:name="com.udacity.project4.ui.locations.LocationListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_location_list">
+        <action
+            android:id="@+id/action_locationListFragment_to_locationDetailFragment"
+            app:destination="@id/locationDetailFragment" />
+        <action
+            android:id="@+id/action_locationListFragment_to_loginFragment2"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationDetailFragment"
+        android:name="com.udacity.project4.ui.locationdetail.LocationDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_location_detail">
+        <argument
+            android:name="location"
+            android:defaultValue="@null"
+            app:argType="com.udacity.project4.data.database.entites.Location"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_locationDetailFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.udacity.project4.ui.map.MapFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_map">
+        <argument
+            android:name="locationSelect"
+            android:defaultValue="@null"
+            app:argType="com.udacity.project4.ui.dto.LocationSelectDto"
+            app:nullable="true" />
+    </fragment>
+</navigation>

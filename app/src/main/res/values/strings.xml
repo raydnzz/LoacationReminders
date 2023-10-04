@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Location Reminders</string>
+    <string name="login">Login</string>
+    <string name="no_data">No Data</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+</resources>
