@@ -11,7 +11,7 @@ import com.udacity.project4.utils.SingleLiveEvent
 import com.udacity.project4.utils.isSuccess
 import kotlinx.coroutines.launch
 
-class LocationListViewModel(
+class RemindersViewModel(
     private val locationUseCase: LocationUseCase
 ) : ViewModel() {
 

@@ -25,10 +25,10 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 @ExperimentalCoroutinesApi
-class LocationListViewModelTest {
+class RemindersViewModelTest {
 
     private lateinit var locationRepository: FakeDataSource
-    private lateinit var locationListViewModel: LocationListViewModel
+    private lateinit var remindersViewModel: RemindersViewModel
 
     private val location = Location(
         id = "15",
@@ -50,7 +50,7 @@ class LocationListViewModelTest {
     fun setUp() {
         locationRepository = FakeDataSource()
         locationRepository.deleteAll()
-        locationListViewModel = LocationListViewModel(LocationUseCaseImpl(locationRepository))
+        remindersViewModel = RemindersViewModel(LocationUseCaseImpl(locationRepository))
     }
 
     @After
@@ -64,26 +64,26 @@ class LocationListViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher())
         locationRepository.add(location)
 
-        locationListViewModel.getLocation()
-        assertThat(locationListViewModel.showLoading.getOrAwaitValue(), `is`(true))
+        remindersViewModel.getLocation()
+        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(true))
         advanceUntilIdle()
-        assertThat(locationListViewModel.showLoading.getOrAwaitValue(), `is`(false))
-        val actual = locationListViewModel.locations.getOrAwaitValue()
+        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(false))
+        val actual = remindersViewModel.locations.getOrAwaitValue()
         assertThat(actual, notNullValue())
     }
 
     @Test
     fun test_no_data_with_error() = runTest(mainCoroutineRule.testDispatcher) {
         locationRepository.setError(true)
-        locationListViewModel.getLocation()
-        val actual = locationListViewModel.showSnackBar.getOrAwaitValue()
+        remindersViewModel.getLocation()
+        val actual = remindersViewModel.showSnackBar.getOrAwaitValue()
         assertThat(actual, `is`("GetLocation List Error"))
     }
 
     @Test
     fun test_no_data_with_data_empty() = runTest(mainCoroutineRule.testDispatcher) {
-        locationListViewModel.getLocation()
-        val actual = locationListViewModel.showSnackBar.getOrAwaitValue()
+        remindersViewModel.getLocation()
+        val actual = remindersViewModel.showSnackBar.getOrAwaitValue()
         assertThat(actual, `is`("Empty"))
     }
 }

@@ -37,7 +37,7 @@ import com.google.android.gms.maps.model.PointOfInterest
 import com.google.android.material.snackbar.Snackbar
 import com.udacity.project4.R
 import com.udacity.project4.databinding.FragmentMapBinding
-import com.udacity.project4.ui.locationdetail.LocationDetailFragment
+import com.udacity.project4.ui.locationdetail.ReminderDetailFragment
 import com.udacity.project4.utils.PermissionUtil.checkPermission
 import com.udacity.project4.utils.PermissionUtil.getPermission
 import kotlinx.coroutines.launch
@@ -98,7 +98,7 @@ class MapFragment : Fragment(), MenuProvider {
 
         binding.btnSave.setOnClickListener {
             findNavController().apply {
-                previousBackStackEntry!!.savedStateHandle[LocationDetailFragment.LOCATION_SELECT_KEY] =
+                previousBackStackEntry!!.savedStateHandle[ReminderDetailFragment.LOCATION_SELECT_KEY] =
                     bundleOf("DATA" to viewModel.locationSelectDto)
                 popBackStack()
             }

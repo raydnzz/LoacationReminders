@@ -44,14 +44,14 @@ import org.mockito.Mockito.after
 @ExperimentalCoroutinesApi
 @MediumTest
 @RunWith(AndroidJUnit4::class)
-class LocationListFragmentTest : KoinTest {
+class RemindersFragmentTest : KoinTest {
 
     @JvmField
     @Rule
     val instantExecutorRule = InstantTaskExecutorRule()
     private val applicationContext: Context = ApplicationProvider.getApplicationContext()
     private val mockNavController = Mockito.mock(NavController::class.java)
-    private lateinit var viewModel: LocationListViewModel
+    private lateinit var viewModel: RemindersViewModel
     private lateinit var locationDao: LocationDao
     private val location = Location(
         id = "15",
@@ -83,7 +83,7 @@ class LocationListFragmentTest : KoinTest {
     // Test for display snack bar
     @Test
     fun test_display_no_data() {
-        launchFragmentInContainer<LocationListFragment>(bundleOf(), R.style.LoacationRemindersTheme)
+        launchFragmentInContainer<RemindersFragment>(bundleOf(), R.style.LoacationRemindersTheme)
         onView(withText("No Data")).check(matches(isDisplayed()))
         onView(withText("Locations empty")).check(matches(isDisplayed()))
     }
@@ -94,7 +94,7 @@ class LocationListFragmentTest : KoinTest {
             locationDao.insert(location)
         }
 
-        val spec = launchFragmentInContainer<LocationListFragment>(
+        val spec = launchFragmentInContainer<RemindersFragment>(
             bundleOf(), R.style.LoacationRemindersTheme
         )
 
@@ -114,7 +114,7 @@ class LocationListFragmentTest : KoinTest {
 
     @Test
     fun test_navigate_to_location_detail() {
-        launchFragmentInContainer<LocationListFragment>(
+        launchFragmentInContainer<RemindersFragment>(
             bundleOf(), R.style.LoacationRemindersTheme
         ).onFragment {
             Navigation.setViewNavController(
@@ -129,7 +129,7 @@ class LocationListFragmentTest : KoinTest {
             .navigate(LocationListFragmentDirections.actionLocationListFragmentToLocationDetailFragment())
     }
 
-    private fun getActivity(fragmentScenario: FragmentScenario<LocationListFragment>): Activity? {
+    private fun getActivity(fragmentScenario: FragmentScenario<RemindersFragment>): Activity? {
         var activity: Activity? = null
         fragmentScenario.withFragment {
             activity = this@withFragment.requireActivity()

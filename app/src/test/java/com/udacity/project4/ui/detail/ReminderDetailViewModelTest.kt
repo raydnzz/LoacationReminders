@@ -5,7 +5,7 @@ import com.google.android.gms.location.Geofence
 import com.udacity.project4.data.repository.location.LocationRepository
 import com.udacity.project4.domain.location.LocationUseCaseImpl
 import com.udacity.project4.ui.FakeDataSource
-import com.udacity.project4.ui.locationdetail.LocationDetailViewModel
+import com.udacity.project4.ui.locationdetail.ReminderDetailViewModel
 import com.udacity.project4.ui.locations.getOrAwaitValue
 import com.udacity.project4.utils.MainCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,10 +19,10 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class LocationDetailViewModelTest {
+class ReminderDetailViewModelTest {
 
     private lateinit var locationRepository: LocationRepository
-    private lateinit var locationDetailViewModel: LocationDetailViewModel
+    private lateinit var reminderDetailViewModel: ReminderDetailViewModel
 
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
@@ -35,7 +35,7 @@ class LocationDetailViewModelTest {
     fun setUp() {
         locationRepository = FakeDataSource()
         (locationRepository as FakeDataSource).deleteAll()
-        locationDetailViewModel = LocationDetailViewModel(LocationUseCaseImpl(locationRepository))
+        reminderDetailViewModel = ReminderDetailViewModel(LocationUseCaseImpl(locationRepository))
     }
 
     @After
@@ -52,14 +52,14 @@ class LocationDetailViewModelTest {
             actual = expected
         }
 
-        locationDetailViewModel.saveLocation(callBack)
+        reminderDetailViewModel.saveLocation(callBack)
 
         assertThat(
-            locationDetailViewModel.showToast.getOrAwaitValue(),
+            reminderDetailViewModel.showToast.getOrAwaitValue(),
             `is`("Save location success")
         )
         assertThat(
-            locationDetailViewModel.showLoading.getOrAwaitValue(),
+            reminderDetailViewModel.showLoading.getOrAwaitValue(),
             `is`(false)
         )
         assertThat(actual, `is`(expected))

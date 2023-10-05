@@ -21,13 +21,13 @@ import com.udacity.project4.databinding.FragmentLocationListBinding
 import com.udacity.project4.ui.locations.adapter.LocationAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LocationListFragment : Fragment(), MenuProvider {
+class RemindersFragment : Fragment(), MenuProvider {
 
     private val binding by lazy {
         FragmentLocationListBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: LocationListViewModel by viewModel()
+    private val viewModel: RemindersViewModel by viewModel()
 
     private val locationAdapter = LocationAdapter {
 
@@ -52,7 +52,7 @@ class LocationListFragment : Fragment(), MenuProvider {
 
         binding.apply {
             btnAdd.setOnClickListener {
-                LocationListFragmentDirections.actionLocationListFragmentToLocationDetailFragment()
+                RemindersFragmentDirections.actionLocationListFragmentToLocationDetailFragment()
                     .let { action ->
                         findNavController().navigate(action)
                     }

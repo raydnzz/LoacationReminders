@@ -36,7 +36,7 @@ import com.udacity.project4.utils.PermissionUtil.isPermission
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.concurrent.TimeUnit
 
-class LocationDetailFragment : Fragment() {
+class ReminderDetailFragment : Fragment() {
 
     companion object {
         const val LOCATION_SELECT_KEY = "LOCATION_SELECT_KEY"
@@ -55,8 +55,8 @@ class LocationDetailFragment : Fragment() {
         LocationServices.getGeofencingClient(requireActivity())
     }
 
-    private val viewModel: LocationDetailViewModel by viewModel()
-    private val args: LocationDetailFragmentArgs by navArgs()
+    private val viewModel: ReminderDetailViewModel by viewModel()
+    private val args: ReminderDetailFragmentArgs by navArgs()
 
     private val binding by lazy {
         FragmentLocationDetailBinding.inflate(layoutInflater).also {
@@ -108,7 +108,7 @@ class LocationDetailFragment : Fragment() {
 
         binding.apply {
             lnSelector.setOnClickListener {
-                LocationDetailFragmentDirections.actionLocationDetailFragmentToMapFragment().also {
+                ReminderDetailFragmentDirections.actionLocationDetailFragmentToMapFragment().also {
                     findNavController().navigate(it)
                 }
             }
