@@ -126,7 +126,7 @@ class RemindersFragmentTest : KoinTest {
 
         onView(withId(R.id.btn_add)).perform(click())
         Mockito.verify(mockNavController, after(1000))
-            .navigate(LocationListFragmentDirections.actionLocationListFragmentToLocationDetailFragment())
+            .navigate(RemindersFragmentDirections.actionLocationListFragmentToLocationDetailFragment())
     }
 
     private fun getActivity(fragmentScenario: FragmentScenario<RemindersFragment>): Activity? {
