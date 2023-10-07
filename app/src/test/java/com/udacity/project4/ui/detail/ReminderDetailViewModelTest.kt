@@ -2,11 +2,11 @@ package com.udacity.project4.ui.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.android.gms.location.Geofence
-import com.udacity.project4.data.repository.location.LocationRepository
+import com.udacity.project4.data.repository.location.RemindersLocalRepository
 import com.udacity.project4.domain.location.LocationUseCaseImpl
 import com.udacity.project4.ui.FakeDataSource
-import com.udacity.project4.ui.locationdetail.ReminderDetailViewModel
-import com.udacity.project4.ui.locations.getOrAwaitValue
+import com.udacity.project4.ui.reminder.ReminderDetailViewModel
+import com.udacity.project4.ui.reminders.getOrAwaitValue
 import com.udacity.project4.utils.MainCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -21,7 +21,7 @@ import org.junit.Test
 @ExperimentalCoroutinesApi
 class ReminderDetailViewModelTest {
 
-    private lateinit var locationRepository: LocationRepository
+    private lateinit var remindersLocalRepository: RemindersLocalRepository
     private lateinit var reminderDetailViewModel: ReminderDetailViewModel
 
     @get:Rule
@@ -33,15 +33,15 @@ class ReminderDetailViewModelTest {
 
     @Before
     fun setUp() {
-        locationRepository = FakeDataSource()
-        (locationRepository as FakeDataSource).deleteAll()
-        reminderDetailViewModel = ReminderDetailViewModel(LocationUseCaseImpl(locationRepository))
+        remindersLocalRepository = FakeDataSource()
+        (remindersLocalRepository as FakeDataSource).deleteAll()
+        reminderDetailViewModel = ReminderDetailViewModel(LocationUseCaseImpl(remindersLocalRepository))
     }
 
     @After
     fun teaDown() {
-        (locationRepository as FakeDataSource).deleteAll()
-        (locationRepository as FakeDataSource).setError(false)
+        (remindersLocalRepository as FakeDataSource).deleteAll()
+        (remindersLocalRepository as FakeDataSource).setError(false)
     }
 
     @Test

@@ -9,7 +9,7 @@ import com.udacity.project4.BuildConfig
 import com.udacity.project4.R
 import com.udacity.project4.data.database.entites.Location
 import com.udacity.project4.data.repository.dto.Result
-import com.udacity.project4.ui.locationdetail.ReminderDetailFragmentArgs
+import com.udacity.project4.ui.reminder.ReminderDetailFragmentArgs
 
 fun <T : Any> Result<T>.isSuccess(callback: (t: T) -> Unit) {
     if (this is Result.Success) {

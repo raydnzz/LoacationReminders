@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locations.adapter
+package com.udacity.project4.ui.reminders.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

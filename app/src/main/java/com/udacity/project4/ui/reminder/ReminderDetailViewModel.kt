@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locationdetail
+package com.udacity.project4.ui.reminder
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

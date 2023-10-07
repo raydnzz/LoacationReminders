@@ -3,8 +3,8 @@ package com.udacity.project4.di
 import android.Manifest
 import android.os.Build
 import com.udacity.project4.di.modules.useCaseModule
-import com.udacity.project4.ui.locationdetail.ReminderDetailViewModel
-import com.udacity.project4.ui.locations.RemindersViewModel
+import com.udacity.project4.ui.reminder.ReminderDetailViewModel
+import com.udacity.project4.ui.reminders.RemindersListViewModel
 import com.udacity.project4.utils.Constants.PERMISSION_NAME
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.qualifier.named
@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val locationListModule = module {
     includes(useCaseModule)
-    viewModelOf(::RemindersViewModel)
+    viewModelOf(::RemindersListViewModel)
 }
 
 val locationDetailModule = module {

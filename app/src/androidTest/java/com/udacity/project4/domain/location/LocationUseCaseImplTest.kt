@@ -8,7 +8,7 @@ import com.udacity.project4.data.database.AppDatabase
 import com.udacity.project4.data.database.entites.Location
 import com.udacity.project4.data.datasource.location.LocationDataSourceImpl
 import com.udacity.project4.data.repository.dto.Result
-import com.udacity.project4.data.repository.location.LocationRepositoryImpl
+import com.udacity.project4.data.repository.location.RemindersLocalRepositoryImpl
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -30,7 +30,7 @@ class LocationUseCaseImplTest {
         val db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         val locationDao = db.getLocationDao()
         val locationUseCase =
-            LocationUseCaseImpl(LocationRepositoryImpl(LocationDataSourceImpl(locationDao)))
+            LocationUseCaseImpl(RemindersLocalRepositoryImpl(LocationDataSourceImpl(locationDao)))
         val location = Location(
             id = "15",
             title = "Test",

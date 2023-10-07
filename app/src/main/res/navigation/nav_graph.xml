@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/locationListFragment"
-        android:name="com.udacity.project4.ui.locations.RemindersFragment"
+        android:name="com.udacity.project4.ui.reminders.RemindersListFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_location_list">
         <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/locationDetailFragment"
-        android:name="com.udacity.project4.ui.locationdetail.ReminderDetailFragment"
+        android:name="com.udacity.project4.ui.reminder.ReminderDetailFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_location_detail">
         <argument

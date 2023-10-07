@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locations
+package com.udacity.project4.ui.reminders
 
 import android.app.Activity
 import android.content.Context
@@ -44,14 +44,14 @@ import org.mockito.Mockito.after
 @ExperimentalCoroutinesApi
 @MediumTest
 @RunWith(AndroidJUnit4::class)
-class RemindersFragmentTest : KoinTest {
+class RemindersListFragmentTest : KoinTest {
 
     @JvmField
     @Rule
     val instantExecutorRule = InstantTaskExecutorRule()
     private val applicationContext: Context = ApplicationProvider.getApplicationContext()
     private val mockNavController = Mockito.mock(NavController::class.java)
-    private lateinit var viewModel: RemindersViewModel
+    private lateinit var viewModel: RemindersListViewModel
     private lateinit var locationDao: LocationDao
     private val location = Location(
         id = "15",
@@ -83,7 +83,7 @@ class RemindersFragmentTest : KoinTest {
     // Test for display snack bar
     @Test
     fun test_display_no_data() {
-        launchFragmentInContainer<RemindersFragment>(bundleOf(), R.style.LoacationRemindersTheme)
+        launchFragmentInContainer<RemindersListFragment>(bundleOf(), R.style.LoacationRemindersTheme)
         onView(withText("No Data")).check(matches(isDisplayed()))
         onView(withText("Locations empty")).check(matches(isDisplayed()))
     }
@@ -94,7 +94,7 @@ class RemindersFragmentTest : KoinTest {
             locationDao.insert(location)
         }
 
-        val spec = launchFragmentInContainer<RemindersFragment>(
+        val spec = launchFragmentInContainer<RemindersListFragment>(
             bundleOf(), R.style.LoacationRemindersTheme
         )
 
@@ -114,7 +114,7 @@ class RemindersFragmentTest : KoinTest {
 
     @Test
     fun test_navigate_to_location_detail() {
-        launchFragmentInContainer<RemindersFragment>(
+        launchFragmentInContainer<RemindersListFragment>(
             bundleOf(), R.style.LoacationRemindersTheme
         ).onFragment {
             Navigation.setViewNavController(
@@ -126,10 +126,10 @@ class RemindersFragmentTest : KoinTest {
 
         onView(withId(R.id.btn_add)).perform(click())
         Mockito.verify(mockNavController, after(1000))
-            .navigate(RemindersFragmentDirections.actionLocationListFragmentToLocationDetailFragment())
+            .navigate(RemindersListFragmentDirections.actionLocationListFragmentToLocationDetailFragment())
     }
 
-    private fun getActivity(fragmentScenario: FragmentScenario<RemindersFragment>): Activity? {
+    private fun getActivity(fragmentScenario: FragmentScenario<RemindersListFragment>): Activity? {
         var activity: Activity? = null
         fragmentScenario.withFragment {
             activity = this@withFragment.requireActivity()

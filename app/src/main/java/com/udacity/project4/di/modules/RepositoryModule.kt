@@ -1,7 +1,7 @@
 package com.udacity.project4.di.modules
 
-import com.udacity.project4.data.repository.location.LocationRepository
-import com.udacity.project4.data.repository.location.LocationRepositoryImpl
+import com.udacity.project4.data.repository.location.RemindersLocalRepository
+import com.udacity.project4.data.repository.location.RemindersLocalRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -15,7 +15,7 @@ val dispatcherModule = module {
 val appRepository = module {
     includes(appDataSource, dispatcherModule)
 
-    singleOf(::LocationRepositoryImpl) {
-        bind<LocationRepository>()
+    singleOf(::RemindersLocalRepositoryImpl) {
+        bind<RemindersLocalRepository>()
     }
 }

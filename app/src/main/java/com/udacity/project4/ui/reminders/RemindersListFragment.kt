@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locations
+package com.udacity.project4.ui.reminders
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,16 +18,16 @@ import com.firebase.ui.auth.AuthUI
 import com.google.android.material.snackbar.Snackbar
 import com.udacity.project4.R
 import com.udacity.project4.databinding.FragmentLocationListBinding
-import com.udacity.project4.ui.locations.adapter.LocationAdapter
+import com.udacity.project4.ui.reminders.adapter.LocationAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RemindersFragment : Fragment(), MenuProvider {
+class RemindersListFragment : Fragment(), MenuProvider {
 
     private val binding by lazy {
         FragmentLocationListBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: RemindersViewModel by viewModel()
+    private val viewModel: RemindersListViewModel by viewModel()
 
     private val locationAdapter = LocationAdapter {
 
@@ -52,7 +52,7 @@ class RemindersFragment : Fragment(), MenuProvider {
 
         binding.apply {
             btnAdd.setOnClickListener {
-                RemindersFragmentDirections.actionLocationListFragmentToLocationDetailFragment()
+                RemindersListFragmentDirections.actionLocationListFragmentToLocationDetailFragment()
                     .let { action ->
                         findNavController().navigate(action)
                     }

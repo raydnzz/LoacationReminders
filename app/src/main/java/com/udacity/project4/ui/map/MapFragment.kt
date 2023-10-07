@@ -37,7 +37,7 @@ import com.google.android.gms.maps.model.PointOfInterest
 import com.google.android.material.snackbar.Snackbar
 import com.udacity.project4.R
 import com.udacity.project4.databinding.FragmentMapBinding
-import com.udacity.project4.ui.locationdetail.ReminderDetailFragment
+import com.udacity.project4.ui.reminder.ReminderDetailFragment
 import com.udacity.project4.utils.PermissionUtil.checkPermission
 import com.udacity.project4.utils.PermissionUtil.getPermission
 import kotlinx.coroutines.launch

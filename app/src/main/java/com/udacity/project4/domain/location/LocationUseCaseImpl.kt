@@ -2,16 +2,16 @@ package com.udacity.project4.domain.location
 
 import com.udacity.project4.data.database.entites.Location
 import com.udacity.project4.data.repository.dto.Result
-import com.udacity.project4.data.repository.location.LocationRepository
+import com.udacity.project4.data.repository.location.RemindersLocalRepository
 
-class LocationUseCaseImpl(private val locationRepository: LocationRepository) : LocationUseCase {
-    override suspend fun create(location: Location) = locationRepository.add(location)
+class LocationUseCaseImpl(private val remindersLocalRepository: RemindersLocalRepository) : LocationUseCase {
+    override suspend fun create(location: Location) = remindersLocalRepository.add(location)
 
-    override suspend fun getLocations(): Result<List<Location>> = locationRepository.getLocations()
+    override suspend fun getLocations(): Result<List<Location>> = remindersLocalRepository.getLocations()
     override suspend fun getLocation(id: String): Result<Location> =
-        locationRepository.getLocation(id)
+        remindersLocalRepository.getLocation(id)
 
     override suspend fun delete(location: Location) {
-        locationRepository.delete(location)
+        remindersLocalRepository.delete(location)
     }
 }

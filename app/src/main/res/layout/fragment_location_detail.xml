@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.udacity.project4.ui.locationdetail.ReminderDetailViewModel" />
+            type="com.udacity.project4.ui.reminder.ReminderDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.locationdetail.ReminderDetailFragment">
+        tools:context=".ui.reminder.ReminderDetailFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_title"

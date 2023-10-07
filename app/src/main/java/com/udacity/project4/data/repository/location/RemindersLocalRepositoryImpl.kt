@@ -7,10 +7,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LocationRepositoryImpl(
+class RemindersLocalRepositoryImpl(
     private val locationDataSource: LocationDataSource,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : LocationRepository {
+) : RemindersLocalRepository {
 
     companion object {
         private const val ERROR_MESSAGE = "Location not found"

@@ -2,9 +2,9 @@ package com.udacity.project4.ui
 
 import com.udacity.project4.data.database.entites.Location
 import com.udacity.project4.data.repository.dto.Result
-import com.udacity.project4.data.repository.location.LocationRepository
+import com.udacity.project4.data.repository.location.RemindersLocalRepository
 
-class FakeDataSource : LocationRepository {
+class FakeDataSource : RemindersLocalRepository {
 
     private val locations = mutableListOf<Location>()
     private var isError = false

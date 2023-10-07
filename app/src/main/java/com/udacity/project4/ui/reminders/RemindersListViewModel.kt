@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locations
+package com.udacity.project4.ui.reminders
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import com.udacity.project4.utils.SingleLiveEvent
 import com.udacity.project4.utils.isSuccess
 import kotlinx.coroutines.launch
 
-class RemindersViewModel(
+class RemindersListViewModel(
     private val locationUseCase: LocationUseCase
 ) : ViewModel() {
 

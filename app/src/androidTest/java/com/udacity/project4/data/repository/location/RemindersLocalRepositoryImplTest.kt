@@ -24,12 +24,12 @@ import org.junit.runner.RunWith
 @RunWith(Enclosed::class)
 @ExperimentalCoroutinesApi
 @SmallTest
-class LocationRepositoryImplTest {
+class RemindersLocalRepositoryImplTest {
     private companion object {
         val context: Context = ApplicationProvider.getApplicationContext()
         val db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         val locationDao = db.getLocationDao()
-        val locationRepository = LocationRepositoryImpl(LocationDataSourceImpl(locationDao))
+        val locationRepository = RemindersLocalRepositoryImpl(LocationDataSourceImpl(locationDao))
         val location = Location(
             id = "15",
             title = "Test",

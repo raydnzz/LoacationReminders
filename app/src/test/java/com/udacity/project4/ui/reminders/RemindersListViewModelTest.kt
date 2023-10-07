@@ -1,4 +1,4 @@
-package com.udacity.project4.ui.locations
+package com.udacity.project4.ui.reminders
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
@@ -25,10 +25,10 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 
 @ExperimentalCoroutinesApi
-class RemindersViewModelTest {
+class RemindersListViewModelTest {
 
     private lateinit var locationRepository: FakeDataSource
-    private lateinit var remindersViewModel: RemindersViewModel
+    private lateinit var remindersListViewModel: RemindersListViewModel
 
     private val location = Location(
         id = "15",
@@ -50,7 +50,7 @@ class RemindersViewModelTest {
     fun setUp() {
         locationRepository = FakeDataSource()
         locationRepository.deleteAll()
-        remindersViewModel = RemindersViewModel(LocationUseCaseImpl(locationRepository))
+        remindersListViewModel = RemindersListViewModel(LocationUseCaseImpl(locationRepository))
     }
 
     @After
@@ -64,26 +64,26 @@ class RemindersViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher())
         locationRepository.add(location)
 
-        remindersViewModel.getLocation()
-        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(true))
+        remindersListViewModel.getLocation()
+        assertThat(remindersListViewModel.showLoading.getOrAwaitValue(), `is`(true))
         advanceUntilIdle()
-        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(false))
-        val actual = remindersViewModel.locations.getOrAwaitValue()
+        assertThat(remindersListViewModel.showLoading.getOrAwaitValue(), `is`(false))
+        val actual = remindersListViewModel.locations.getOrAwaitValue()
         assertThat(actual, notNullValue())
     }
 
     @Test
     fun test_no_data_with_error() = runTest(mainCoroutineRule.testDispatcher) {
         locationRepository.setError(true)
-        remindersViewModel.getLocation()
-        val actual = remindersViewModel.showSnackBar.getOrAwaitValue()
+        remindersListViewModel.getLocation()
+        val actual = remindersListViewModel.showSnackBar.getOrAwaitValue()
         assertThat(actual, `is`("GetLocation List Error"))
     }
 
     @Test
     fun test_no_data_with_data_empty() = runTest(mainCoroutineRule.testDispatcher) {
-        remindersViewModel.getLocation()
-        val actual = remindersViewModel.showSnackBar.getOrAwaitValue()
+        remindersListViewModel.getLocation()
+        val actual = remindersListViewModel.showSnackBar.getOrAwaitValue()
         assertThat(actual, `is`("Empty"))
     }
 }
